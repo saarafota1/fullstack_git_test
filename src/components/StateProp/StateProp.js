@@ -26,7 +26,7 @@ class StateProp extends React.Component {
 
     handleChange(e) {
         let elem_name = e.target.name;
-        this.state[elem_name] = e.target.value;
+        this.state[elem_name] = e.target.value; // this.state.name  = 
         this.setState({});
     }
 

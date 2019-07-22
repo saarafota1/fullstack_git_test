@@ -5,6 +5,8 @@ import FormComp from '././components/formComp/formComp';
 import TableComp from '././components/tableComp/tableComp';
 import EsComp from '././components/ES6Comp/EsComp';
 import StateProp from '././components/StateProp/StateProp';
+import BankComp from './components/BankComp/BankComp';
+import TableAndFormComp from './components/TableAndFormComp/TableAndFormComp';
 
 
 class App extends React.Component {
@@ -13,7 +15,7 @@ class App extends React.Component {
             <div className="App">
                 <img src={logo} className="App-logo" alt="logo" />
                 <div className="row">
-                    <div className="col-md-6">
+                    {/* <div className="col-md-6">
                         <EsComp />
                     </div>
                     <div className="col-md-6">
@@ -24,7 +26,15 @@ class App extends React.Component {
                     </div>
                     <div className="col-md-6">
                         <StateProp />
+                    </div> 
+                     <div className="col-md-6">
+                        <BankComp />
                     </div>
+                    */}
+                    <div className="col-md-6">
+                        <TableAndFormComp />
+                    </div>
+
                 </div>
             </div>
         );
