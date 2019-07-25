@@ -7,7 +7,7 @@ import EsComp from '././components/ES6Comp/EsComp';
 import StateProp from '././components/StateProp/StateProp';
 import BankComp from './components/BankComp/BankComp';
 import TableAndFormComp from './components/TableAndFormComp/TableAndFormComp';
-
+import PageComp from './components/PageComp/PageComp';
 
 class App extends React.Component {
     render() {
@@ -30,9 +30,13 @@ class App extends React.Component {
                      <div className="col-md-6">
                         <BankComp />
                     </div>
-                    */}
+                    
                     <div className="col-md-6">
                         <TableAndFormComp />
+                    </div>
+                    */}
+                    <div>
+                        <PageComp />
                     </div>
 
                 </div>
