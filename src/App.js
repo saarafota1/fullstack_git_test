@@ -8,6 +8,7 @@ import StateProp from '././components/StateProp/StateProp';
 import BankComp from './components/BankComp/BankComp';
 import TableAndFormComp from './components/TableAndFormComp/TableAndFormComp';
 import PageComp from './components/PageComp/PageComp';
+import AjaxComp from './components/AjaxCalls/AjaxComp';
 
 class App extends React.Component {
     render() {
@@ -35,9 +36,10 @@ class App extends React.Component {
                         <TableAndFormComp />
                     </div>
                     */}
-                    <div>
-                        <PageComp />
+                    <div className="col-md-6">
+                        <AjaxComp />
                     </div>
+
 
                 </div>
             </div>

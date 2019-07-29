@@ -14,6 +14,9 @@ class OnlyTable extends React.Component {
     // componentDidMount(){
 
     // }
+    deleteUser(user) {
+        this.props.deleteUserFromParent(user);
+    }
 
     render() {
         return (
@@ -25,6 +28,7 @@ class OnlyTable extends React.Component {
                             <th>Phone</th>
                             <th>Age</th>
                             <th>Gender</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,6 +41,7 @@ class OnlyTable extends React.Component {
                                             <td>{user.age}</td>
                                             <td>{user.phone}</td>
                                             <td>{user.gender == 0 ? "Male" : "Female"}</td>
+                                            <td><i onClick={this.deleteUser.bind(this, user.name)} className="fa fa-trash"></i></td>
                                         </tr>
                                     )
                                 }

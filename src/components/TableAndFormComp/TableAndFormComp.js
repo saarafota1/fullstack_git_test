@@ -44,6 +44,11 @@ class TableAndFormComp extends React.Component {
         this.setState({});
     }
 
+    deleteUserFromArray(user_to_delete) {
+        this.state.users.pop();
+        this.setState({});
+    }
+
     render() {
         return (
             <div className="row">
@@ -51,7 +56,7 @@ class TableAndFormComp extends React.Component {
                     <OnlyForm trigger_addUser={this.addUser.bind(this)} />
                 </div>
                 <div className="col-md-6">
-                    <OnlyTable users_list={this.state.users} />
+                    <OnlyTable deleteUserFromParent={this.deleteUserFromArray.bind(this)} users_list={this.state.users} />
                 </div>
             </div>
         )
