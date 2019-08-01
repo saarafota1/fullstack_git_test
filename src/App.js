@@ -9,12 +9,14 @@ import BankComp from './components/BankComp/BankComp';
 import TableAndFormComp from './components/TableAndFormComp/TableAndFormComp';
 import PageComp from './components/PageComp/PageComp';
 import AjaxComp from './components/AjaxCalls/AjaxComp';
+import MovieComp from './components/MovieProject/MovieComp';
+import RouteComp from './components/Routing/routeComp';
 
 class App extends React.Component {
     render() {
         return (
             <div className="App">
-                <img src={logo} className="App-logo" alt="logo" />
+                {/* <img src={logo} className="App-logo" alt="logo" /> */}
                 <div className="row">
                     {/* <div className="col-md-6">
                         <EsComp />
@@ -35,12 +37,18 @@ class App extends React.Component {
                     <div className="col-md-6">
                         <TableAndFormComp />
                     </div>
-                    */}
+                    
                     <div className="col-md-6">
                         <AjaxComp />
                     </div>
-
-
+                    
+                    <div className="col-md-6">
+                        <MovieComp />
+                    </div>
+                    */}
+                    <div className="col-md-12">
+                        <RouteComp />
+                    </div>
                 </div>
             </div>
         );

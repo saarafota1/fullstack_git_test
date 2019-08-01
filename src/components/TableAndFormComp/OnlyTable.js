@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class OnlyTable extends React.Component {
 
@@ -29,6 +30,7 @@ class OnlyTable extends React.Component {
                             <th>Age</th>
                             <th>Gender</th>
                             <th>Delete</th>
+                            <th>Edit</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -42,6 +44,7 @@ class OnlyTable extends React.Component {
                                             <td>{user.phone}</td>
                                             <td>{user.gender == 0 ? "Male" : "Female"}</td>
                                             <td><i onClick={this.deleteUser.bind(this, user.name)} className="fa fa-trash"></i></td>
+                                            <td><Link to={"/edit/" + user.name + "/" + user.age} >Edit User</Link></td>
                                         </tr>
                                     )
                                 }
