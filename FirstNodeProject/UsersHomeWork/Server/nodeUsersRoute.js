@@ -15,10 +15,11 @@ http.createServer(function (req, res) {
     result.data = [];
 
 
-    res.setHeader("Access-Control-Allow-Origin", "*"); // cors domain fix
-    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    // res.setHeader("Access-Control-Allow-Origin", "*"); // cors domain fix
+    // res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.writeHead(200, {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        "Access-Control-Allow-Origin": "*"
     });
 
     var q = url.parse(req.url, true).query;
@@ -28,6 +29,7 @@ http.createServer(function (req, res) {
         if (action == "getUsersList") {
             result.success = true;
             result.data = getUsersList();
+            result.message = "Got Users List";
         }
         if (action == "addNewUser") {
             result.success = true;
