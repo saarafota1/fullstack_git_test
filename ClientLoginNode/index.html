@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <h2>Login Example</h2>
+            <div class="alert alert-danger" id="message_alert" style="display:none;"></div>
+            <div class="col-md-12">
+                <div class="tabs">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab"
+                                aria-controls="login" aria-selected="true">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab"
+                                aria-controls="register" aria-selected="false">Register</a>
+                        </li>
+                        <li class="nav-item" onclick="LoadUsersList();">
+                            <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                aria-controls="home" aria-selected="false">Home Client</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="home-admin-tab" data-toggle="tab" href="#home_admin" role="tab"
+                                aria-controls="home_admin" aria-selected="false">Home Admin</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+                            <div class="row">
+                                <div class="col-md-6 login-form-1">
+                                    <h3>Login Form 1</h3>
+
+                                    <div class="form-group">
+                                        <input type="text" id="username_login" class="form-control"
+                                            placeholder="Your Username *" value="" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" id="password_login" class="form-control"
+                                            placeholder="Your Password *" value="" />
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="btnSubmit btn btn-info" onclick="LoginUser();">Login</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
+                            <h2>Register</h2>
+                            <div>
+                                <label>
+                                    <p class="label-txt">ENTER YOUR USERNAME</p>
+                                    <input type="text" class="input" id="username">
+                                    <div class="line-box">
+                                        <div class="line"></div>
+                                    </div>
+                                </label>
+                                <label>
+                                    <p class="label-txt">ENTER YOUR NAME</p>
+                                    <input type="text" class="input" id="name">
+                                    <div class="line-box">
+                                        <div class="line"></div>
+                                    </div>
+                                </label>
+                                <label>
+                                    <p class="label-txt">ENTER YOUR PASSWORD</p>
+                                    <input type="text" class="input" id="password">
+                                    <div class="line-box">
+                                        <div class="line"></div>
+                                    </div>
+                                </label>
+                                <div class="btn btn-success">Save</div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div id="users_table" class="table table-dark"></div>
+                        </div>
+                        <div class="tab-pane fade" id="home_admin" role="tabpanel" aria-labelledby="home-admin-tab">Home
+                            Admin</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="js.js"></script>
+</body>
+
+</html>
