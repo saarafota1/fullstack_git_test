@@ -10,6 +10,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var sessionRouter = require('./routes/sessionRoute');
 var moviesRouter = require('./routes/movies');
+var asyncFunctionsRouter = require('./routes/asyncFunctions');
 
 var app = express();
 
@@ -44,6 +45,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/session', sessionRouter);
 app.use('/movies', moviesRouter);
+app.use('/asyncFunctions', asyncFunctionsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
