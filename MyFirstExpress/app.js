@@ -11,6 +11,8 @@ var usersRouter = require('./routes/users');
 var sessionRouter = require('./routes/sessionRoute');
 var moviesRouter = require('./routes/movies');
 var asyncFunctionsRouter = require('./routes/asyncFunctions');
+var eventEmitterRouter = require('./routes/eventEmitter');
+var mysqlQuerysRouter = require('./routes/mysqlQuerys');
 
 var app = express();
 
@@ -46,6 +48,8 @@ app.use('/users', usersRouter);
 app.use('/session', sessionRouter);
 app.use('/movies', moviesRouter);
 app.use('/asyncFunctions', asyncFunctionsRouter);
+app.use('/eventEmitter', eventEmitterRouter);
+app.use('/mysqlQuerys', mysqlQuerysRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

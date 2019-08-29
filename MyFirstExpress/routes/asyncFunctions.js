@@ -65,10 +65,20 @@ router.get('/promise', function (req, res, next) {
 
         });
     console.log("After Promise...");
+
+
+
+    // readFromFilePromise('./files/data.js')
+    //     .then((data) => {
+    //         console.log(data);
+    //         getBookData(data[0].title).then((data)=>{
+
+    //         })
+    //     })
 });
 
 function getBookData(title) {
-    return new Promise((resolve, reject) => {
+    var pro = new Promise((resolve, reject) => {
         try {
             http.get('/getBook', { title: title }, function (err, data) {
                 resolve(data);
@@ -80,6 +90,8 @@ function getBookData(title) {
             reject(err);
         }
     });
+
+    return pro;
 }
 
 function readFromFilePromise(url) {
@@ -96,4 +108,26 @@ function readFromFilePromise(url) {
     });
 }
 module.exports = router;
+
+
+function scaryClown() {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve('🤡');
+        }, 2000);
+    });
+}
+
+async function msg() {
+    const msg = await scaryClown();
+    console.log('Message:', msg);
+    scaryClown().then((res) => {
+
+    });
+    var x = await scaryClown();
+}
+
+msg();
+
+
 
