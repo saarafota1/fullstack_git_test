@@ -4,37 +4,37 @@ var mysql = require('mysql');
 var client_response = require('../modules/client_response');
 var con = require('./../modules/connection').getConnection();
 
-/* GET users listing. */
+/* GET cars listing. */
 router.get('/', function (req, res, next) {
     client_response.clear();
-    con.query('SELECT * FROM users u left join jobs j on j.id = u.job_id', function (err, users, fields) {
+    con.query('SELECT * FROM cars', function (err, cars, fields) {
         if (err) {
             console.log(err);
             client_response.setResponse(false, true, "There Was an Error...", err);
             res.json(client_response.getData());
             return;
         }
-        client_response.setResponse(true, false, "Users List", users);
+        client_response.setResponse(true, false, "Cars List", cars);
         res.json(client_response.getData());
     });
 });
 
-// Insert User
+// Insert Car
 router.put('/', (req, res, next) => {
-    var name = (req.body.name) ? req.body.name : "";
-    var age = (req.body.age) ? req.body.age : "";
-    var phone = (req.body.phone) ? req.body.phone : "";
+    var type = (req.body.type) ? req.body.type : "";
+    var year = (req.body.year) ? req.body.year : "";
+    var color = (req.body.color) ? req.body.color : "";
     var job_id = (req.body.job_id) ? req.body.job_id : "";
 
     var err_fields = [];
-    if (name == "") {
-        err_fields.push("Name is Empty");
+    if (type == "") {
+        err_fields.push("Type is Empty");
     }
-    if (age == "") {
-        err_fields.push("Age is Empty");
+    if (year == "") {
+        err_fields.push("Year is Empty");
     }
-    if (phone == "") {
-        err_fields.push("Phone is Empty");
+    if (color == "") {
+        err_fields.push("Color is Empty");
     }
     if (job_id == "") {
         err_fields.push("Job Not Selected");
@@ -46,14 +46,14 @@ router.put('/', (req, res, next) => {
         res.json(client_response.getData());
     } else {
         // Enter New User...
-        con.query(`INSERT INTO users (name,age,phone,job_id) VALUES (?,?,?,?)`, [name, age, phone, job_id], function (err, users, fields) {
+        con.query(`INSERT INTO cars (type,year,color,job_id) VALUES (?,?,?,?)`, [type, year, color, job_id], function (err, users, fields) {
             if (err) {
                 console.log(err);
-                client_response.setResponse(false, true, "There Was an Error Adding User To DB...", err);
+                client_response.setResponse(false, true, "There Was an Error Adding Car To DB...", err);
                 res.json(client_response.getData());
                 return;
             }
-            client_response.setResponse(true, false, "User Added Succesfully", []);
+            client_response.setResponse(true, false, "Car Added Succesfully", []);
             res.json(client_response.getData());
         });
     }
@@ -64,10 +64,10 @@ router.put('/', (req, res, next) => {
 router.delete('/', function (req, res, next) {
     var err_fields = [];
 
-    var user_id = (req.body.user_id) ? req.body.user_id : "";
+    var car_id = (req.body.car_id) ? req.body.car_id : "";
 
-    if (user_id == "") {
-        err_fields.push("user_id NOT Selected");
+    if (car_id == "") {
+        err_fields.push("car_id NOT Selected");
     }
 
     client_response.clear();
@@ -76,14 +76,14 @@ router.delete('/', function (req, res, next) {
         client_response.setResponse(false, false, " somthimg missing...", err_fields);
         res.json(client_response.getData());
     } else {
-        con.query(`DELETE FROM users Where id = ${user_id}`, function (err, users, fields) {
+        con.query(`DELETE FROM users Where id = ?`, [car_id], function (err, cars, fields) {
             if (err) {
                 console.log(err);
                 client_response.setResponse(false, true, "There Was an Error...", err);
                 res.json(client_response.getData());
                 return;
             }
-            client_response.setResponse(true, false, "User Deleted...", []);
+            client_response.setResponse(true, false, "Car Deleted...", []);
             res.json(client_response.getData());
         });
     }
@@ -91,26 +91,26 @@ router.delete('/', function (req, res, next) {
 });
 
 
-// Update User
+// Update Car
 router.post('/', (req, res, next) => {
-    var user_id = (req.body.user_id) ? req.body.user_id : "";
-    var name = (req.body.name) ? req.body.name : "";
-    var age = (req.body.age) ? req.body.age : "";
-    var phone = (req.body.phone) ? req.body.phone : "";
+    var car_id = (req.body.car_id) ? req.body.car_id : "";
+    var type = (req.body.type) ? req.body.type : "";
+    var year = (req.body.year) ? req.body.year : "";
+    var color = (req.body.color) ? req.body.color : "";
     var job_id = (req.body.job_id) ? req.body.job_id : "";
 
     var err_fields = [];
-    if (user_id == "") {
-        err_fields.push("user_id NOT Selected");
+    if (car_id == "") {
+        err_fields.push("car_id NOT Selected");
     }
-    if (name == "") {
-        err_fields.push("Name is Empty");
+    if (type == "") {
+        err_fields.push("Type is Empty");
     }
-    if (age == "") {
-        err_fields.push("Age is Empty");
+    if (year == "") {
+        err_fields.push("Year is Empty");
     }
-    if (phone == "") {
-        err_fields.push("Phone is Empty");
+    if (color == "") {
+        err_fields.push("Color is Empty");
     }
     if (job_id == "") {
         err_fields.push("Job Not Selected");
@@ -123,14 +123,14 @@ router.post('/', (req, res, next) => {
         res.json(client_response.getData());
     } else {
         // Enter New User...
-        con.query(`UPDATE users SET name=?,age=?,phone=?,job_id=? WHERE id=?`, [name, age, phone, job_id, user_id], function (err, users, fields) {
+        con.query(`UPDATE cars SET type=?,year=?,color=?,job_id=? WHERE id=?`, [type, year, color, job_id, car_id], function (err, cars, fields) {
             if (err) {
                 console.log(err);
-                client_response.setResponse(false, true, "There Was an Error Updating User To DB...", err);
+                client_response.setResponse(false, true, "There Was an Error Updating Car To DB...", err);
                 res.json(client_response.getData());
                 return;
             }
-            client_response.setResponse(true, false, "User Updated Succesfully", []);
+            client_response.setResponse(true, false, "Car Updated Succesfully", []);
             res.json(client_response.getData());
         });
     }
