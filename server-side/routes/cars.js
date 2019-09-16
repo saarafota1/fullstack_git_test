@@ -63,7 +63,7 @@ router.put('/', (req, res, next) => {
 // Delete User
 router.delete('/', function (req, res, next) {
     var err_fields = [];
-
+    console.log(req.body);
     var car_id = (req.body.car_id) ? req.body.car_id : "";
 
     if (car_id == "") {
@@ -76,7 +76,7 @@ router.delete('/', function (req, res, next) {
         client_response.setResponse(false, false, " somthimg missing...", err_fields);
         res.json(client_response.getData());
     } else {
-        con.query(`DELETE FROM users Where id = ?`, [car_id], function (err, cars, fields) {
+        con.query(`DELETE FROM cars Where id = ?`, [car_id], function (err, cars, fields) {
             if (err) {
                 console.log(err);
                 client_response.setResponse(false, true, "There Was an Error...", err);

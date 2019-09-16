@@ -6,7 +6,7 @@ function WarningBanner(props) {
     }
 
     return (
-        <div className="warning alert alert-danger mt-3">
+        <div className={props.success ? "warning alert alert-success mt-3" : "warning alert alert-danger mt-3"}>
             Warning Message: {props.message}
         </div>
     );

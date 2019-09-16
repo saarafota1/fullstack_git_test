@@ -9,7 +9,8 @@ class UserFormComp extends React.Component {
         phone: "",
         job_id: "",
         show_warning: false,
-        error: ""
+        error: "",
+        green_message: true
     }
 
     handleChange(event) {
@@ -39,10 +40,17 @@ class UserFormComp extends React.Component {
             .then((res) => {
                 console.log(res);
                 if (res.success) {
-                    alert(res.message);
+                    //alert(res.message);
+                    this.state.show_warning = true;
+                    this.state.error = res.message;
+                    this.green_message = true;
+                    this.setState({ name: "", age: "", phone: "" });
                     this.props.getUsersFunction();
                 } else {
-                    alert(res.message);
+                    this.state.show_warning = true;
+                    this.state.error = res.message;
+                    this.green_message = false;
+                    this.setState({});
                 }
             }, (error) => {
                 console.log("Error:", error);
@@ -53,6 +61,7 @@ class UserFormComp extends React.Component {
     render() {
         return (
             <div>
+                <WarningBanner success={this.state.green_message} warn={this.state.show_warning} message={this.state.error} />
                 <div className="form">
                     <div className="form-group">
                         <label>Name:</label>

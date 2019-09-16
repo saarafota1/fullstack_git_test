@@ -16,6 +16,21 @@ class JobsComp extends React.Component {
         jobs: []
     }
 
+    componentDidMount() {
+        this.getJobs();
+    }
+    getJobs() {
+        fetch('/jobs')
+            .then(res => res.json())
+            .then((res) => {
+                console.log(res);
+                this.state.jobs = res.data;
+                this.setState({});
+            })
+            .catch((err) => {
+                console.log("Error: ", err);
+            })
+    }
     render() {
         return (
             <div>
@@ -52,7 +67,7 @@ class JobsComp extends React.Component {
 
                     </div>
                     <div className="col-md-6">
-                        <JobsFormComp />
+                        <JobsFormComp getJobs={this.getJobs.bind(this)} />
                     </div>
                 </div>
             </div>

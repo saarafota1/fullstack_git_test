@@ -21,7 +21,7 @@ class App extends React.Component {
                                 </div>
                                 <Route exact path="/" component={UserComp} />
                                 <Route path="/jobs" component={JobComp} />
-                                <Route path="/cars" component={CarComp} />
+                                <Route path="/cars"  component={CarComp} />
                             </div>
                         </Router>
                     </div>

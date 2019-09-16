@@ -21,7 +21,7 @@ router.get('/', function (req, res, next) {
 
 // Insert Car
 router.put('/', (req, res, next) => {
-    var user_id = (req.body.user_id) ? req.body.user_id : "";
+    var car_id = (req.body.car_id) ? req.body.car_id : "";
     var position = (req.body.position) ? req.body.position : "";
     var description = (req.body.description) ? req.body.description : "";
     var salary = (req.body.salary) ? req.body.salary : "";
@@ -29,8 +29,8 @@ router.put('/', (req, res, next) => {
     var start_date = (req.body.start_date) ? req.body.start_date : "";
 
     var err_fields = [];
-    if (user_id == "") {
-        err_fields.push("user_id NOT Selected");
+    if (car_id == "") {
+        err_fields.push("car_id NOT Selected");
     }
     if (position == "") {
         err_fields.push("position is Empty");
@@ -54,7 +54,7 @@ router.put('/', (req, res, next) => {
         res.json(client_response.getData());
     } else {
         // Enter New User...
-        con.query(`INSERT INTO cars (user_id,position,description,salary,seniority,start_date) VALUES (?,?,?,?,?,?)`, [user_id, position, description, salary, seniority, start_date], function (err, users, fields) {
+        con.query(`INSERT INTO jobs (car_id,position,description,salary,seniority,start_date) VALUES (?,?,?,?,?,?)`, [car_id, position, description, salary, seniority, start_date], function (err, users, fields) {
             if (err) {
                 console.log(err);
                 client_response.setResponse(false, true, "There Was an Error Adding Job To DB...", err);
