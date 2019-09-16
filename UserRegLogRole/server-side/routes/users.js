@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var con = require('./../DB/connection').getPool();
 const bcrypt = require('bcrypt');
-
+const passport = require('passport');
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
@@ -54,6 +54,7 @@ router.post('/login', function (req, res, next) {
 
     });
 });
+
 
 router.put('/register', function (req, res, next) {
     var name = req.body.name;
@@ -125,4 +126,6 @@ router.get('/checkUserConnectedRole', function (req, res, next) {
         return;
     }
 });
+
+
 module.exports = router;
