@@ -61,6 +61,32 @@ router.post('/', function (req, res, next) {
     });
 });
 
+/* Update User */
+router.put('/', function (req, res, next) {
+    let id_to_update = req.body.id;
+    let user = {
+        name: "new val",
+        age: 50,
+        phone: "1122554466"
+    }
+    MongoClient.connect(url, (err, db) => {
+        if (err) {
+            res.json(err);
+            return;
+        }
+        var dbo = db.db("testDB");
+        dbo.collection("users").updateOne(
+            { name: id_to_update },
+            { $set: { name: user.name, age: user.age, phone: user.phone } },
+            (err, result) => {
+                if (err) throw err;
+                //console.log(result);
+                db.close();
+                res.json(result);
+            });
+    });
+});
+
 
 router.delete('/', function (req, res, next) {
     name = "saar";
